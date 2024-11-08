@@ -31,6 +31,7 @@ const HeroSection = () => {
                             <p
                                 style={{ color: mode === 'dark' ? 'white' : 'white' }}
                                 className="sm:text-3xl text-xl font-extralight sm:mx-auto ">
+                                    Here are some photography blogs contributed by Niloy.
                             </p>
                         </div>
                     </main>
