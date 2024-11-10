@@ -20,12 +20,13 @@ const Dashboard = () => {
                     </div>
                     <div className="right">
                         <h1
-                            className='text-center font-bold text-2xl mb-2'
+                            className=' font-bold text-2xl mb-2'
                             style={{ color: mode === 'dark' ? 'white' : 'black' }}
-                        >
+                        >Niloy Sarkar babu
                         </h1>
                         <h2
                             style={{ color: mode === 'dark' ? 'white' : 'black' }} className="font-semibold">
+                                Part-time Photographer
                         </h2>
                         <h2
                             style={{ color: mode === 'dark' ? 'white' : 'black' }} className="font-semibold">sarkarniloy102@gmail.com
@@ -48,6 +49,7 @@ const Dashboard = () => {
                                         }}
                                         className='px-8 py-2'
                                     >
+                                        create blog
                                     </Button>
                                 </div>
                             </Link>
@@ -63,6 +65,7 @@ const Dashboard = () => {
                                     }}
                                     className='px-8 py-2'
                                 >
+                                    Log Out
                                 </Button>
                             </div>
                         </div>
@@ -130,7 +133,7 @@ const Dashboard = () => {
                                         </td>
                                         {/* Delete Blog  */}
                                         <td style={{ color: mode === 'dark' ? 'white' : 'black' }} className="px-6 py-4">
-                                            <button className=' px-4 py-1 rounded-lg text-white font-bold bg-red-500'>
+                                            <button className=' px-4 py-1 rounded-lg text-white font-bold bg-red-500'> Delete
                                             </button>
                                         </td>
                                     </tr>
