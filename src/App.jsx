@@ -15,6 +15,7 @@ import Nopage from './Pages/Nopage/Nopage';
 import { Toaster } from "react-hot-toast";
 import MyState from './context/data/myState';
 import CreateBlog from './Pages/Admin/CreateBlog/CreateBlog';
+import PrivateRoute from './Components/Routes/PrivateRoute';
 const App = () => {
   return (
     <div>
@@ -25,7 +26,7 @@ const App = () => {
             <Route path="/blog" element={<Blog />} />
             <Route path="/allblogs" element={<AllBlogs />} />
             <Route path="/bloginfo/:id" element={<BlogInfo />} />
-            <Route path="/adminlogin" element={<AdminLogin />} />
+            <Route path="/adminlogin" element={<PrivateRoute><AdminLogin /></PrivateRoute>} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/createblog" element={<CreateBlog />} />
             <Route path="/*" element={<Nopage />} />
