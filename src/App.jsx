@@ -26,9 +26,9 @@ const App = () => {
             <Route path="/blog" element={<Blog />} />
             <Route path="/allblogs" element={<AllBlogs />} />
             <Route path="/bloginfo/:id" element={<BlogInfo />} />
-            <Route path="/adminlogin" element={<PrivateRoute><AdminLogin /></PrivateRoute>} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/createblog" element={<CreateBlog />} />
+            <Route path="/adminlogin" element={<AdminLogin />} />
+            <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
+            <Route path="/createblog" element={<PrivateRoute><CreateBlog /></PrivateRoute>} />
             <Route path="/*" element={<Nopage />} />
           </Routes>
           <Toaster />
