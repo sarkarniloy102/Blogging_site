@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import {
     Card,
     CardHeader,
@@ -8,10 +8,37 @@ import {
     Typography,
 } from "@material-tailwind/react";
 import myContext from '../../../context/data/myContext';
+import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
+import { auth } from '../../../firebase/FirebaseConfig';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 
 const AdminLogin = () => {
     const context = useContext(myContext);
     const { mode } = context;
+
+    const navigate = useNavigate();
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const login = async () => {
+        if (!email || !password) {
+            return toast.error("All fields are required");
+        }
+
+        try {
+            const result = await signInWithEmailAndPassword(auth, email, password);
+            toast.success("Login Successfully");
+            localStorage.setItem("admin", JSON.stringify(result));
+            navigate('/dashboard');
+        } catch (error) {
+            console.log(error);
+            toast.error("Login Failed");
+
+        }
+
+    }
 
     return (
         <div className="flex justify-center items-center h-screen">
@@ -49,6 +76,7 @@ const AdminLogin = () => {
                             ? 'rgb(30, 41, 59)'
                             : 'rgb(226, 232, 240)'
                     }}>
+                        Admin Login
                     </Typography>
                 </CardHeader>
                 {/* CardBody */}
@@ -60,6 +88,11 @@ const AdminLogin = () => {
                                 type="email"
                                 label="Email"
                                 name="email"
+                                value={email}
+                                onChange={(e) => {
+                                    setEmail(e.target.value);
+                                }
+                                }
                             />
                         </div>
                         {/* Second Input  */}
@@ -67,10 +100,15 @@ const AdminLogin = () => {
                             <Input
                                 type="password"
                                 label="Password"
+                                value={password}
+                                onChange={(e) => {
+                                    setPassword(e.target.value);
+                                }}
                             />
                         </div>
                         {/* Login Button  */}
                         <Button
+                            onClick={login}
                             style={{
                                 background: mode === 'dark'
                                     ? 'rgb(226, 232, 240)'
@@ -79,7 +117,7 @@ const AdminLogin = () => {
                                     ? 'rgb(30, 41, 59)'
                                     : 'rgb(226, 232, 240)'
                             }}>
-                                Login
+                            Login
                         </Button>
                     </form>
                 </CardBody>
